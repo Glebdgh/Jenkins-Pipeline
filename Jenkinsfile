@@ -6,14 +6,16 @@ pipeline {
       stage('1-Clone') { 
              steps {
                  git credentialsId: '79269508', url: 'https://github.com/Glebdgh/Scripts.git'
-                 sh "ls -la" sh "git branch -a" 
+                 sh "ls -la" 
+                 sh "git branch -a" 
                  sh "git pull https://github.com/Glebdgh/Scripts.git"
                  sh "git checkout master"
                 }
            }
       stage('2-Build') { 
              steps { 
-               sh "chmod 777 build.sh" sh "./build.sh" 
+               sh "chmod 777 build.sh" 
+               sh "./build.sh" 
                sh "echo ${currentBuild.result} > artifact.txt"
             }
         }
