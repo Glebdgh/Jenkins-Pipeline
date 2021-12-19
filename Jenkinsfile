@@ -32,8 +32,7 @@ pipeline {
               archiveArtifacts artifacts: 'artifact.txt'
         }
         failure { 
-              hipchatSend message: "Attention @here ${env.JOB_NAME} #${env.BUILD_NUMBER} has failed.",
-                    color: 'RED'  
+              archiveArtifacts artifacts: 'test_result.txt' 
          }
        }
     }
