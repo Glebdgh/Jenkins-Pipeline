@@ -1,0 +1,26 @@
+node {
+ stage('1-Clone') {
+       git credentialsId: '79269508', url: 'https://github.com/Glebdgh/Scripts.git' 
+       sh "ls -la" 
+       sh "git pull https://github.com/Glebdgh/Scripts.git" 
+       sh "git checkout master"
+    }
+    try{ 
+     stage('2-Build') { 
+        sh "chmod 777 build.sh" 
+        sh "./build.sh"
+        sh "echo ${currentBuild.result} > artifact.txt" 
+        }
+    stage('3-Test') { 
+        sh "chmod 777 test.sh" 
+        sh "./test.sh" 
+        sh "echo ${currentBuild.result} > test_result.txt"
+           }
+      }
+    catch(e){ 
+        archiveArtifacts artifacts: 'test_result.txt'
+          }
+    finally{ 
+        archiveArtifacts artifacts: 'artifact.txt'
+    }
+}
