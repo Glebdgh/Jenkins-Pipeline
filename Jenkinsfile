@@ -8,7 +8,7 @@ pipeline {
                  git credentialsId: '79269508', url: 'https://github.com/Glebdgh/Scripts.git'
                  sh "ls -la" 
                  sh "git branch -a" 
-                 sh "git pull https://github.com/Glebdgh/Scripts.git"
+                 sh "git clone https://github.com/Glebdgh/Scripts.git"
                  sh "git checkout master"
                 }
            }

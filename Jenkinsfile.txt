@@ -7,7 +7,7 @@ node ('docker-slave-jnlp'){
     }
     try{ 
      stage('2-Build') { 
-        sh "chmod 777 build.sh" 
+        sh "chmod 777 build.sh"
         sh "./build.sh"
         sh "echo ${currentBuild.result} > artifact.txt" 
         }
