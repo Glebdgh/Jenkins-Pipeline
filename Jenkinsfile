@@ -7,7 +7,7 @@ pipeline {
              steps {
                  git credentialsId: '', url: 'https://github.com/Glebdgh/Scripts.git'
                  sh "ls -la" 
-                 sh "git clone https://github.com/Glebdgh/Scripts.git"
+                 sh "git pull https://github.com/Glebdgh/Scripts.git"
                  sh "git checkout master"
                 }
            }
