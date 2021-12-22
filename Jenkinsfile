@@ -5,10 +5,10 @@ pipeline {
     stages { 
       stage('1-Clone') { 
              steps {
-                sshagent(credentials: ['githeb-ssh2']){
+                sshagent(credentials: ['githeb-ssh']){
                  git credentialsId: '', url: 'https://github.com/Glebdgh/Scripts.git'
                  sh "ls -la" 
-                 sh "git pull https://github.com/Glebdgh/Scripts.git"
+                 sh "git clone https://github.com/Glebdgh/Scripts.git"
                  sh "git checkout master"
                 }
            }
