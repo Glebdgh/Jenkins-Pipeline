@@ -7,8 +7,7 @@ pipeline {
              steps {
                 sshagent(credentials: ['github-ssh']){
                  sh "ls -la"
-                 sh "cd "
-                 sh "git clone https://github.com/Glebdgh/Scripts.git"
+                 sh "git clone git@github.com:Glebdgh/Scripts.git"
                  sh "git checkout master"
                 }
            }
