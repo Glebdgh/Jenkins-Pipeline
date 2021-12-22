@@ -5,12 +5,14 @@ pipeline {
     stages { 
       stage('1-Clone') { 
              steps {
+                sshagent(credentials: ['github-ssh']){
                  git credentialsId: '', url: 'https://github.com/Glebdgh/Scripts.git'
                  sh "ls -la" 
                  sh "git pull https://github.com/Glebdgh/Scripts.git"
                  sh "git checkout master"
                 }
            }
+        }
       stage('2-Build') { 
              steps { 
                sh "chmod 777 build.sh" 
