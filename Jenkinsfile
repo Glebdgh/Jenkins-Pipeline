@@ -7,14 +7,15 @@ pipeline {
              steps {
                 sshagent(credentials: ['githeb-ssh2']){
                  git credentialsId: '', url: 'https://github.com/Glebdgh/Scripts.git'
-                 sh "ls -la" 
+                 sh "ls -la"
                  sh "git clone https://github.com/Glebdgh/Scripts.git"
+                 sh "cd Scripts"
                  sh "git checkout master"
                 }
            }
         }
       stage('2-Build') { 
-             steps { 
+             steps {
                sh "chmod 777 build.sh" 
                sh "./build.sh" 
                sh "echo ${currentBuild.result} > artifact.txt"
