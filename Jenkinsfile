@@ -5,7 +5,7 @@ pipeline {
     stages { 
       stage('1-Clone') { 
              steps {
-                sshagent(credentials: ['github-ssh']){
+                sshagent(credentials: ['Ubuntu-container-key']){
                  git credentialsId: '', url: 'https://github.com/Glebdgh/Scripts.git'
                  sh "ls -la" 
                  sh "git pull https://github.com/Glebdgh/Scripts.git"
