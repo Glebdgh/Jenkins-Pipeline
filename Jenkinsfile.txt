@@ -2,7 +2,7 @@ node ('docker-slave-jnlp'){
  stage('1-Clone') {
        git credentialsId: '79269508', url: 'https://github.com/Glebdgh/Scripts.git' 
        sh "ls -la" 
-       sh "git pull https://github.com/Glebdgh/Scripts.git" 
+       sh "git clone -b $ghprbSourceBranch https://github.com/Glebdgh/Scripts.git" 
        sh "git checkout master"
     }
     try{ 
