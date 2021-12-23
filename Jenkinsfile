@@ -6,7 +6,7 @@ pipeline {
                   sh "ls -la;pwd" 
                   sh "git --version" 
                   sh "chmod 777 /home/jenkins" 
-                  sh "git clone -b $ghprbSourceBranch https://github.com/Glebdgh/Scripts.git"
+                  sh 'git clone -b $ghprbSourceBranch https://github.com/Glebdgh/Scripts.git'
                   }
         }
       stage('2-Build') { 
