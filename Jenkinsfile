@@ -6,8 +6,7 @@ pipeline {
                   sh "ls -la;pwd" 
                   sh "git --version" 
                   sh "chmod 777 /home/jenkins" 
-                  sh "git clone https://github.com/Glebdgh/Scripts.git pr"
-                  sh "git branch master"
+                  sh "git clone -b master https://github.com/Glebdgh/Scripts.git pr"
                   }
         }
       stage('2-Build') { 
