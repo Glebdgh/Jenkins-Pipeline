@@ -13,12 +13,12 @@ pipeline {
             steps { 
                sh "cd Scripts"
                sh 'chmod -R +x Scripts' 
-               sh 'Scripts/build.sh > artifact.txt'
+               sh "echo ${currentBuild.result} > artifact.txt" 
              }
         }
       stage('3-Test') { 
           steps { 
-             sh 'Scripts/test.sh > test_result.txt'
+             sh "echo ${currentBuild.result} > test_result.txt" 
               }
           }
        }
