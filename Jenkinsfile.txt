@@ -1,16 +1,17 @@
 node ('docker-slave-jnlp'){
  stage('1-Clone') {
-       git credentialsId: '79269508', url: 'https://github.com/Glebdgh/Scripts.git' 
        sh "ls -la" 
        sh "git clone -b $ghprbSourceBranch https://github.com/Glebdgh/Scripts.git"     
        }
     try{ 
      stage('2-Build') { 
+        sh "cd Scripts"
         sh "chmod 777 build.sh"
         sh "./build.sh"
         sh "echo ${currentBuild.result} > artifact.txt" 
         }
     stage('3-Test') { 
+        sh "cd Scripts"
         sh "chmod 777 test.sh" 
         sh "./test.sh" 
         sh "echo ${currentBuild.result} > test_result.txt"
